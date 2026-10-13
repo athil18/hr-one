@@ -1,0 +1,17 @@
+# Local MongoDB binaries and data
+mongo_bin/
+mongo_data/
+kit.zip
+candidate_kit/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Environment and secrets
+.env
+.venv/
+env/
+venv/
