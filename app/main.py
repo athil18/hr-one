@@ -14,6 +14,7 @@ from contextlib import asynccontextmanager
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, Query, Path, status
+from fastapi.responses import HTMLResponse
 from pydantic import BaseModel, Field
 from pymongo import MongoClient
 import pymongo.errors
@@ -261,6 +262,16 @@ class RegularizeRequest(BaseModel):
 # --------------------------------------------------------------------------- #
 # System & Employee Endpoints
 # --------------------------------------------------------------------------- #
+@app.get("/", response_class=HTMLResponse, include_in_schema=False)
+@app.get("/dashboard", response_class=HTMLResponse, include_in_schema=False)
+def get_dashboard():
+    dashboard_file = os.path.join(os.path.dirname(__file__), "dashboard.html")
+    if os.path.exists(dashboard_file):
+        with open(dashboard_file, "r", encoding="utf-8") as f:
+            return f.read()
+    return "<h1>HROne Attendance & Intelligence API</h1><p>Visit <a href='/docs'>/docs</a> for API documentation.</p>"
+
+
 @app.get("/health")
 def health():
     try:
