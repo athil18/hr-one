@@ -15,3 +15,12 @@ __pycache__/
 .venv/
 env/
 venv/
+
+# Agents, IDE, OS & Logs
+.agents/
+.vscode/
+.idea/
+.DS_Store
+# Internal docs
+PROBLEM_STATEMENT.docx
+
